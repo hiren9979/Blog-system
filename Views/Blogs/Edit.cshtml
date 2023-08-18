@@ -1,0 +1,106 @@
+﻿@model Blog_system.Models.BlogCommentView
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    /* Container style */
+    .edit-container {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Title style */
+    .edit-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    /* Form input style */
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    /* Comment input style */
+    .comment-input {
+        margin-top: 15px;
+    }
+
+    /* Submit button style */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    /* Back button style */
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+            border-color: #545b62;
+        }
+</style>
+
+<h1 class="edit-title">Edit</h1>
+
+<div class="edit-container">
+    <h4>Blog</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Blog.Id" />
+                <div class="form-group">
+                    <label asp-for="Blog.Title" class="control-label"></label>
+                    <input asp-for="Blog.Title" class="form-control" />
+                    <span asp-validation-for="Blog.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Blog.Content" class="control-label"></label>
+                    <input asp-for="Blog.Content" class="form-control" />
+                    <span asp-validation-for="Blog.Content" class="text-danger"></span>
+                </div>
+                <div class="form-group comment-input">
+                    <label for="CommentContent" class="control-label">Add Comment:</label>
+                    <input id="CommentContent" name="CommentContent" class="form-control"
+                           value="@Model.Comment?.Content" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
